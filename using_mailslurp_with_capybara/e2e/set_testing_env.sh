@@ -1,0 +1,2 @@
+export MAILSLURP_API_KEY=
+export MAILSLURP_INBOX_ID=

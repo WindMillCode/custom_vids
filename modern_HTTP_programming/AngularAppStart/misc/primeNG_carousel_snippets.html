@@ -1,0 +1,75 @@
+<p-carousel
+#myVal
+
+[value]="a.extras[1][bb].options.value"
+[numVisible]="a.extras[1][bb].options.numVisible"
+[circular]="a.extras[1][bb].options.circular"
+[responsiveOptions]="a.extras[1][bb].options.responsiveOptions"
+[orientation]="a.extras[1][bb].options.orientation"
+[autoplayInterval]="a.extras[1][bb].options.autoplayInterval"
+[contentClass]="a.extras[1][bb].options.contentClass"
+[dotsContainerClass] ="a.extras[1][bb].options.dotsContainerClass"
+[styleClass] ="a.extras[1][bb].options.styleClass"
+
+*ngIf= "a.bool[1][bb] ==='mat-carousel'"
+class = {{a.val[1][bb]}}
+[ngStyle] ='a.ngCss[1][bb]'
+appExtend [extend] = "ryber.appAvailble( a.extras[1][bb], 'extend')"
+appLatch [latch] = "ryber.appAvailble( a.extras[1][bb], 'appLatch')"
+>
+    <ng-template
+    pTemplate ="header"
+    *ngIf="a.extras[1][bb].options.header"
+
+    >
+        <span class ="a_p_p_CarouselHeader">{{a.extras[1][bb].options.header.title}}</span>
+    </ng-template>
+    <ng-template  let-profile pTemplate="item">
+        <div class ="a_p_p_CarouselCard">
+            <img src= {{profile.src}}
+            width=100
+            class = "a_p_p_CarouselImg"
+            />
+            <h3 class ="a_p_p_CarouselProfileName">
+            {{profile.name}}
+            </h3>
+            <button pButton pRipple label="Add Friend" icon="pi pi-plus" class ="a_p_p_CarouselAddFriendButton"></button>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<p-carousel
+#myVal
+
+[value]="a.extras[1][bb].options.value"
+[numVisible]="a.extras[1][bb].options.numVisible"
+[circular]="a.extras[1][bb].options.circular"
+[responsiveOptions]="a.extras[1][bb].options.responsiveOptions"
+[orientation]="a.extras[1][bb].options.orientation"
+[autoplayInterval]="a.extras[1][bb].options.autoplayInterval"
+[contentClass]="a.extras[1][bb].options.contentClass"
+[dotsContainerClass] ="a.extras[1][bb].options.dotsContainerClass"
+[styleClass] ="a.extras[1][bb].options.styleClass"
+
+
+>
+    <ng-template
+    pTemplate ="header"
+    *ngIf="a.extras[1][bb].options.header"
+
+    >
+        <span class ="a_p_p_CarouselHeader">{{a.extras[1][bb].options.header.title}}</span>
+    </ng-template>
+    <ng-template  let-profile pTemplate="item">
+        <div class ="a_p_p_CarouselCard">
+            <img src= {{profile.src}}
+            width=100
+            class = "a_p_p_CarouselImg"
+            />
+            <h3 class ="a_p_p_CarouselProfileName">
+            {{profile.name}}
+            </h3>
+            <button pButton pRipple label="Add Friend" icon="pi pi-plus" class ="a_p_p_CarouselAddFriendButton"></button>
+        </div>
+    </ng-template>
+</p-carousel>

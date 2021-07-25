@@ -1,0 +1,172 @@
+
+    <p-carousel
+
+    *ngIf="options.type === 'primeng-carousel'"
+    [value]="options.value"
+    [numVisible]="options.numVisible"
+    [circular]="options.circular"
+    [responsiveOptions]="options.responsiveOptions"
+    [orientation]="options.orientation"
+    [autoplayInterval]="options.autoplayInterval"
+    [contentClass]="options.contentClass"
+    [ngStyle]="options.style"
+    [styleClass] ="options.styleClass"
+
+
+    >
+        <ng-template
+        pTemplate ="header"
+        *ngIf="options.header"
+
+        >
+            <span class ="a_p_p_CarouselHeader">{{options.header.title}}</span>
+        </ng-template>
+        <ng-template  let-profile pTemplate="item">
+            <div class ="a_p_p_CarouselCard">
+                <img src= {{profile.src}}
+                width=100
+                class = "a_p_p_CarouselImg"
+                />
+                <h3 class ="a_p_p_CarouselProfileName">
+                {{profile.name}}
+                </h3>
+                <button pButton pRipple label="Add Friend" icon="pi pi-plus" class ="a_p_p_CarouselAddFriendButton"></button>
+            </div>
+        </ng-template>
+    </p-carousel>
+
+    <p-button
+    *ngIf="options.type === 'primeng-button'"
+    [label]="options.label"
+    [icon]="options.icon"
+    [styleClass]="options.styleClass"
+    [ngStyle]="options.style"></p-button>
+
+
+    <p-card
+    *ngIf="options.type === 'primeng-card'"
+    [header]="options.header"
+    [subheader]="options.subheader?.text || options.subheader"
+    [ngStyle]="options.style"
+    [styleClass]="'p-card-shadow ' + options.styleClass">
+        <ng-template pTemplate="header">
+            <img alt="Card"
+            [src]="options.img.src"
+            [ngStyle]="options.img.style"
+            [class]="options.img.class"
+            >
+        </ng-template>
+        <!-- <ng-template pTemplate="subtitle"
+        [class]="options.subheader?.class"
+        >
+
+        </ng-template> -->
+        <p
+        [ngStyle]="options.cardText?.style"
+        [class]="options.cardText?.class"
+        >{{options.cardText}}</p>
+        <ng-template pTemplate="footer">
+
+                <p-button
+                *ngFor='let button of options.buttons'
+                [label]="button.label"
+                [icon]="button.icon"
+                [styleClass]="button.styleClass"
+                [style]="button.style"></p-button>
+
+
+        </ng-template>
+    </p-card>
+
+    <p-dropdown
+    *ngIf="options.type === 'primeng-dropdown'"
+    [options]="options.options"
+    [optionLabel]="options.optionLabel"
+    [showClear]="options.showClear"
+    [placeholder]="options.placeHolder"
+    [ngStyle]="options.style"
+    [styleClass]="options.styleClass"
+    [ngStyle]="options.style"
+    [panelStyle]="options.panel?.style"
+    [panelStyleClass]="options.panel?.class"
+    (onChange)="dropDown.onChange($event)"
+    >
+        <ng-template pTemplate="selectedItem">
+        </ng-template>
+        <ng-template let-items pTemplate="item">
+            <div
+            [class]="items  ?.container?.class || options?.items?.container?.class"
+            [ngStyle]="items?.container?.style || options?.items?.container?.style"
+
+            >
+                <h2
+                [ngStyle]="items?.text?.style || options?.items?.text?.style"
+                >{{items.name}}</h2>
+            </div>
+        </ng-template>
+    </p-dropdown>
+
+
+    <div
+    *ngIf="options.type === 'profileCard'"
+    [class]="(options.class || '') + ' a_p_p_ProfileCard'"
+    [ngStyle]="options.style"
+    >
+
+            <img
+            *ngIf="['img',undefined].includes(options.pic?.type)"
+            alt=""
+            (error)="profileCard.defaultPic({})"
+            [src]="options.pic?.src"
+            [class]="options.pic?.class || 'a_p_p_ProfileCardPic'"
+            >
+            <div
+            *ngIf="options.pic?.type === 'icon'"
+            [class]="options.pic?.container?.class || 'a_p_p_ProfileCardPic'"
+            [ngStyle]="options.pic?.container?.style"
+            >
+                <i
+                [class]="options.pic?.class"
+                >
+                </i>
+            </div>
+
+
+
+        <p
+        [class]="options.name?.class || 'a_p_p_ProfileCardName'"
+        [ngStyle]="options.name?.style"
+        >
+            {{options?.name?.text}}
+        </p>
+        <p-button
+        *ngIf="options.addButton?.hide !=='true'"
+        [label]="options.addButton?.label"
+        [icon]="options.addButton?.icon"
+        [styleClass]="options.addButton?.styleClass || 'a_p_p_ProfileCardAdd'"
+        [style]="options.addButton?.style">
+        Add Friend
+        </p-button>
+        <p-button
+        *ngIf="options.removeButton?.hide !=='true'"
+        [label]="options.removeButton?.label"
+        [icon]="options.removeButton?.icon"
+        [styleClass]="'p-button-secondary '+ (options.removeButton?.styleClass || 'a_p_p_ProfileCardRemove')"
+        [style]="options.removeButton?.style">
+        Remove
+        </p-button>
+
+    </div>
+
+
+    <p-progressSpinner
+    *ngIf="options.type === 'primeng-progressSpinner'"
+    [ngStyle]="options.style"
+    [styleClass]="options.styleClass"
+    [strokeWidth]="options.strokeWidth"
+    [fill]="options.fill"
+    [animationDuration]="options.animationDuration">
+
+    </p-progressSpinner>
+
+

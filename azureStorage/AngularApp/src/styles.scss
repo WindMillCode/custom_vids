@@ -1,0 +1,280 @@
+@mixin blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+}
+
+@mixin dark_blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+}
+
+@mixin black_button {
+	background:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+}
+
+@mixin orange_button {
+	background:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+}
+
+@mixin red_button {
+	background:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+}
+
+@mixin green_button {
+	background:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@mixin outline{
+    border:3px dotted red;
+}
+
+@mixin glassmorphism{
+    border-radius: 30px;
+    backdrop-filter: blur( 4px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
+// @import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeicons/primeicons.css";
+
+
+*{
+    margin :0px 0 0 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-color: transparent;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #263040;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: transparent;
+        opacity:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+input{
+    font-size: 30px;
+}
+
+i {
+    font-size: 48px;
+}
+.p-datatable-header{
+    display: flex;
+    flex-direction: row-reverse
+}
+.a_p_p_{
+
+    &Table{
+        &Component{
+            margin: 50px 0 0 0;
+            width: 90%;
+
+        }
+
+        &Button{
+            @include orange_button;
+        }
+
+        &Url{
+            overflow-wrap: anywhere;
+        }
+
+    }
+    &Overlay{
+        width:100vw;
+        height:100vh;
+        background-image: url(./assets/media/cool-background.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @include flex-column-center;
+        margin: 0 0 0 0;
+    }
+
+    &Title{
+        text-align: center;
+        margin: 30px 0 0 0;
+        font-size: 48px;
+    }
+
+    &Container{
+        &Button{
+            @include green_button;
+            margin: 10px 100px 0 0;
+        }
+
+        &Input{
+            border-radius: 50px;
+            width: 90%;
+            padding: 10px 30px;
+            margin: 30px 0 0 0;
+        }
+
+        &Popup{
+            display: none;
+            z-index: 4;
+        }
+        &Submit{
+            &Button{
+                @include blue_button;
+            }
+
+            &Title{
+                text-align: center;
+                flex-grow: 1
+            }
+
+            &TitleContainer{
+                // @include outline;
+                @include flex-column-center;
+                flex-direction: row;
+                justify-content: space-evenly;
+                width: 100%;
+                margin: 0 !important;
+                height:100px;
+
+            }
+
+            &Cancel{
+                font-size: 48px;
+                justify-self: flex-end;
+                margin: 0  0 50px 0;
+
+            }
+
+        }
+
+
+    }
+
+    &Select{
+        &Button{
+            @include blue_button;
+            margin: 10px 100px 0 0;
+        }
+    }
+
+    &Upload{
+        &Button{
+            @include red_button;
+        }
+    }
+
+    &Final{
+
+        &Link{
+            &Container{
+                @include flex-column-center;
+                width: 90%;
+                & > *{
+                    text-align: center;
+                    overflow-wrap: break-word;
+                }
+            }
+
+
+        }
+        &Popup{
+            display:none;
+            z-index: 4;
+        }
+        &Upload{
+            &Button{
+                @include blue_button;
+            }
+        }
+
+
+
+
+    }
+
+}
+
+// from the extend module
+.a_p_p_{
+    &Popup{
+        &Overlay{
+            background-color: grey;
+            @include glassmorphism;
+            @include flex-column-center;
+            width:100vw;
+            height:100vh;
+            position: absolute;
+            top: 0px;
+            opacity:.9;
+
+        }
+
+        &Title{
+            text-align: center;
+            flex-grow: 1
+        }
+
+        &Cancel{
+            font-size: 48px;
+            justify-self: flex-end;
+            margin: 0  0 50px 0;
+
+        }
+
+        &TitleContainer{
+            // @include outline;
+            @include flex-column-center;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            margin: 0 !important;
+            height:100px;
+
+        }
+
+        &Display{
+            background-color: white;
+            @include glassmorphism;
+            @include flex-column-center;
+            height : 70%;
+            width : 50%;
+            margin: 50px 0 0 0;
+            padding: 30px 0 0 0;
+
+            & > * {
+                margin: 50px 0 0 0;
+            }
+        }
+    }
+}
+
+app-popup{
+    // width:100vw;
+    // height:100vh;
+    position:absolute;
+    top:0;
+    left:0;
+
+}
+//
+
+button[class*="a_p_p_"]{
+    @include glassmorphism;
+    font-size: 30px;
+    padding: 10px;
+    min-width: 300px;
+}

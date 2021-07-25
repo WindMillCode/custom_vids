@@ -1,0 +1,116 @@
+
+$blue:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+$dark_blue:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+$black:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+$orange:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+$red:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+$green:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+
+
+@mixin blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+}
+
+@mixin dark_blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+}
+
+@mixin black_button {
+	background:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+}
+
+@mixin orange_button {
+	background:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+}
+
+@mixin red_button {
+	background:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+}
+
+@mixin green_button {
+	background:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+}
+
+
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@mixin outline{
+    border:3px dotted red;
+}
+
+@mixin glassmorphism{
+    border-radius: 30px;
+    backdrop-filter: blur( 4px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+
+*{
+    margin :10px 0 0 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-color: transparent;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #263040;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: transparent;
+        opacity:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+
+
+$colors: $blue,$dark_blue,$black,$orange,$red,$green;
+$repeat: 6;  // How often you want the pattern to repeat.
+// Warning: a higher number outputs more CSS.
+
+
+
+// differentiate
+@for $i from 1 through $repeat {
+    .drag-wrapper#{$i} {
+        .card{ background: nth($colors, random(length($colors)));};
+        // @debug nth($colors, random(length($colors)));
+    }
+}
+//
+
+// give the selecting effect
+.drag-wrapper.dragging {
+    opacity: 0.5;
+}
+//
+
+
+.drag-wrapper {
+    padding: 4px 0;
+    @include flex-column-center;
+  }
+
+
+
+.card {
+    border: 3px solid black;
+    padding: 20px;
+    width: 90%;
+    font-size: 24px;
+    border-radius: 20px;
+}

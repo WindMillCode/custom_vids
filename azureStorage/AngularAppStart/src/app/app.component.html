@@ -1,0 +1,126 @@
+<div alt="" class=a_p_p_Overlay>
+
+    <h1 class="a_p_p_Title">
+        Azure Blob Storage App
+    </h1>
+
+
+    <div>
+        <button
+        class="a_p_p_ContainerButton"
+        appFileUpload [fileUpload]=fileUpload.container
+        >
+            Create Container
+        </button>
+        <button
+        class="a_p_p_SelectButton"
+        appFileUpload [fileUpload]=fileUpload.select
+        >
+            Select File
+        </button>
+        <button
+        class="a_p_p_UploadButton"
+        appFileUpload [fileUpload]=fileUpload.upload [fileUploadObject]="fileUpload"
+        >
+            Upload File
+        </button>
+    </div>
+
+    <app-popup
+    #popupContent
+    class="a_p_p_ContainerPopup"
+    [close]="popupClose"
+    [content]="popupContent"
+    [containerSubmit]="popupSumbit"
+    [container]="popupInput"
+    [fileUpload]="fileUploadSubject"
+
+    >
+        <div
+        class="a_p_p_ContainerSubmitTitleContainer">
+            <h2
+            class="a_p_p_ContainerSubmitTitle"
+            >Type in a name for your Container</h2>
+            <i
+            #popupClose
+            class="pi pi-times a_p_p_ContainerSubmitCancel"
+
+            ></i>
+        </div>
+        <input
+        #popupInput
+        class="a_p_p_ContainerInput"
+        >
+        <button
+        #popupSumbit
+        class="a_p_p_ContainerSubmitButton"
+        >
+        Submit
+        </button>
+    </app-popup>
+
+    <app-popup
+    #uploadContent
+    [content]="uploadContent"
+    [close]="uploadClose"
+    [finalSubmit]="uploadButton"
+    [fileUpload]="fileUploadSubject"
+    [getButton]="true"
+    class="a_p_p_FinalPopup"
+    >
+    <div
+    class="a_p_p_PopupTitleContainer"
+    >
+        <h2
+
+        class="a_p_p_PopupTitle">
+        This is the File that you would like to submit
+        </h2>
+        <i
+        #uploadClose
+        class="pi pi-times a_p_p_PopupCancel"></i>
+    </div>
+
+    <h3
+    #uploadName
+    >File Name</h3>
+    <button
+    #uploadButton
+    class="a_p_p_FinalUploadButton"
+    >
+    Upload
+    </button>
+    <div class="a_p_p_FinalLinkContainer">
+        <h2 class="a_p_p_FinalLinkText">Here is where you can access your file</h2>
+        <h2
+        #uploadUrl
+        class="a_p_p_FinalLinkUrl"></h2>
+    </div>
+    </app-popup>
+
+    <p-table
+    class="a_p_p_TableComponent"
+    [value]="fileUpload.list.items">
+        <ng-template
+        pTemplate="caption">
+            <button
+            #getFilesButton
+            class="a_p_p_TableButton"
+            >Get All Files</button>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>File Name</th>
+                <th>Url</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-file>
+            <tr>
+                <td>{{file.fileName}}</td>
+                <a
+                class="a_p_p_TableUrl"
+                [href]="file.url">{{file.url}}</a>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

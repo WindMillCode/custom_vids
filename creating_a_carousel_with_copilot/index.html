@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        /* Rules for sizing the icon. */
+        .material-icons.md-18 {
+            font-size: 18px;
+        }
+
+        .material-icons.md-24 {
+            font-size: 24px;
+        }
+
+        .material-icons.md-36 {
+            font-size: 36px;
+        }
+
+        .material-icons.md-48 {
+            font-size: 48px;
+        }
+
+        /* Rules for using icons as black on a light background. */
+        .material-icons.md-dark {
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        .material-icons.md-dark.md-inactive {
+            color: rgba(0, 0, 0, 0.26);
+        }
+
+        /* Rules for using icons as white on a dark background. */
+        .material-icons.md-light {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .material-icons.md-light.md-inactive {
+            color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+    <style>
+
+        *{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .overlay {
+            background-color: blue;
+            opacity: 0.5;
+            height: 95vh;
+            width: 95vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height:  500px;
+        }
+
+
+        .content {
+            background-color: yellow;
+            width: 300px;
+            aspect-ratio: 4/3;
+            margin: 10px 0 10px 0;
+            position: absolute;
+            left: 40%;
+            opacity: 1;
+            transition: left .5s ease-out, opacity 1s ease-out;
+        }
+
+        .content > h1 {
+            font-size: 100px;
+            margin: auto;
+            padding:0 ;
+            width:20%
+        }
+
+        .content-container {
+            background-color: red;
+            width: 400px;
+            min-height: 350px;
+            aspect-ratio: 8/7;
+            padding-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='overlay'>
+        <h1 class='title'>
+            My Carousel
+        </h1>
+
+        <div class='content-container'>
+
+            <div class='content'>
+                <h1>5</h1>
+            </div>
+            <div class='content'>
+                <h1>4</h1>
+            </div>            
+            <div class='content'>
+                <h1>3</h1>
+            </div>            
+            <div class='content'>
+                <h1>2</h1>
+            </div>            
+            <div class='content'>
+                <h1>1</h1>
+            </div>
+
+
+
+        </div>
+
+        <div class='chevron-container'>
+            <span class="material-icons md-48 chevron_left">chevron_left</span>
+            <span class="material-icons md-48 chevron_right">chevron_right</span>
+        </div>
+
+    </div>
+    <script >
+        let left = document.querySelector('.chevron_left');
+        let right= document.querySelector('.chevron_right');
+        let myContent = Array.from(document.querySelectorAll('.content'))
+        let target = myContent.length -1
+        left.addEventListener('click', function() {
+            
+            myContent[target].style.left = '5%';
+            myContent[target].style.opacity = 0;
+            
+            // permit time for the the prev target to cleanup
+            let oldTarget = target;
+            setTimeout(()=>{
+                 myContent[oldTarget].style.left  ='40%';
+            },2000)
+            setTimeout(()=>{
+                myContent[oldTarget].style.opacity = 1;
+            },6000)
+            // 
+            
+            if( target === 0){
+                target = myContent.length -1
+            }
+            else{ 
+                target--;
+            }
+
+            // brute force z-index
+            myContent.forEach((x,i)=>{
+               x.style["z-index"] = 0 
+            })
+            myContent[target].style["z-index"] = 1;
+            // 
+            
+            
+        })
+
+
+        right.addEventListener('click', function() {
+            myContent[target].style.left = '80%';
+            myContent[target].style.opacity = 0; 
+            
+            // permit time for the the prev target to cleanup
+            let oldTarget = target;
+            setTimeout(()=>{
+                 myContent[oldTarget].style.left  ='40%';
+            },2000)
+            setTimeout(()=>{
+                myContent[oldTarget].style.opacity = 1;
+            },6000)
+            //     
+            
+            if( target === myContent.length -1){
+                target = 0
+            }
+            else{ 
+                target++;
+            }   
+            
+            // brute force z-index
+            myContent.forEach((x,i)=>{
+               x.style["z-index"] = 0 
+            })
+            myContent[target].style["z-index"] = 1;
+            // 
+                            
+        })
+    
+    </script>     
+   
+</body>
+
+</html>

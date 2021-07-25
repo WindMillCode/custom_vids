@@ -1,0 +1,18 @@
+<div
+class = "a_p_p_MainBackground">
+    <h1
+    class ="a_p_p_Title"
+    >Connect To Database</h1>
+    <button
+    (click)="button.connect($event)"
+    class="a_p_p_Button" >
+        Click to Connect
+    </button>
+    <div
+    class= "a_p_p_ResultContainer"
+    >
+        <h1>Status</h1>
+        <h2
+        class = "a_p_p_ResultText">{{button.result}}</h2>
+    </div>
+</div>

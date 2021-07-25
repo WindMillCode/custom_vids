@@ -1,0 +1,11 @@
+export COGNITO_REGION_NAME=us-east-2
+export COGNITO_USER_CLIENT_ID=
+export COGNITO_USER_POOL_ID=
+export COGNITO_CLIENT_SECRET=
+
+export  STS_USER_CLIENT_ID=
+export  STS_USER_CLIENT_SECRET=
+
+export ROOT_CLIENT_ID=
+export ROOT_CLIENT_SECRET=
+python3 tornado_server.py

@@ -1,0 +1,177 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "AngularApp": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss",
+                    "skipTests": true
+                },
+                "@schematics/angular:directive": {
+                    "skipTests": true
+                },
+                "@schematics/angular:service": {
+                    "skipTests": true
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "judima": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath":"../docs",
+                        "fileReplacements": [
+                            {
+                                "replace": "src/app/website.ts",
+                                "with": "src/app/cms/website-judima-dev.ts"
+                            },
+                            {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.judima.dev.ts"
+                            }
+                        ],
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "assets": [
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        "scripts": [
+                            "backend/modernizr/modernizr.js",
+                            "backend/polyfills/object.js",
+                            "backend/polyfills/signaturePad.js",
+                            "src/assets/scripts/pikaday.js",
+                            "src/assets/scripts/vanillaTilt.js"
+
+                        ],
+                        "optimization": false,
+                        "sourceMap": true,
+                        "poll": 2500,
+                        "verbose": false,
+                        "watch": false
+                    },
+                    "configurations": {
+                        "production": {
+                            // "baseHref":"/http_Project/",
+                            // "deployUrl":"/http_Project/",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app/website.ts",
+                                    "with": "src/app/cms/website-http-dev.ts"
+                                },
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.http.dev.ts"
+                                }
+                            ],
+                            "assets": [
+                                "src/assets"
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "http": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app/website.ts",
+                                    "with": "src/app/cms/website-http-dev.ts"
+                                },
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.http.dev.ts"
+                                }
+                            ]
+                        },
+                        "play": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app/website.ts",
+                                    "with": "src/app/cms/website-play-dev.ts"
+                                },
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.judima.dev.ts"
+                                }
+                            ]
+                        }
+
+
+
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "AngularApp:judima:play",
+                        "port": 4520,
+                        "liveReload": true,
+						"hmr": false
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "AngularApp:judima:production"
+                        },
+                        "play": {
+                            "port": 4520,
+                            "browserTarget": "AngularApp:judima:play"
+                        },
+
+                        "http": {
+                            "port": 4521,
+                            "browserTarget": "AngularApp:judima:http"
+                        }
+
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "AngularApp:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "AngularApp",
+    "cli": {
+        "analytics": false
+    }
+}

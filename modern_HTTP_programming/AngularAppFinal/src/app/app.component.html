@@ -1,0 +1,15 @@
+
+    <ng-container *ngFor="let item of ryber['formCO$'] | async  ; index as i;">
+        <ng-container *ngIf='ryber.appViewNavigation.routerMatcher({item:item})'>
+            <app-form #myTemp
+            [class] = 'item'
+            [appTV]= 'item'
+            [ngStyle] = 'ryber[item].quantity[0][0].ngCss[0][0]'
+            ></app-form>
+        </ng-container>
+    </ng-container>
+
+
+
+
+

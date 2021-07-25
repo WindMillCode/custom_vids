@@ -1,0 +1,2 @@
+web: python tornado_heroku_server.py 0.0.0.0:\$PORT
+heroku ps:scale web=1

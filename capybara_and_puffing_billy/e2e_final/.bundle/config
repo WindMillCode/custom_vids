@@ -1,0 +1,4 @@
+---
+BUNDLE_PATH: "vendor\\bundle"
+BUNDLE_FORCE_RUBY_PLATFORM: "true"
+BUNDLE_BUILD__EVENTMACHINE: "--verbose --with-ssl-dir=C:\\OpenSSL-Win64"

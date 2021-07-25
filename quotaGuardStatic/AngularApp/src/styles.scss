@@ -1,0 +1,112 @@
+@mixin blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+}
+
+@mixin dark_blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+}
+
+@mixin black_button {
+	background:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+}
+
+@mixin orange_button {
+	background:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+}
+
+@mixin red_button {
+	background:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+}
+
+@mixin green_button {
+	background:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@mixin outline{
+    border:3px dotted red;
+}
+
+@mixin glassmorphism{
+    border-radius: 30px;
+    backdrop-filter: blur( 4px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeicons/primeicons.css";
+
+
+*{
+    margin :0px 0 0 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-color: transparent;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #263040;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: transparent;
+        opacity:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+.a_p_p_{
+    &MainBackground{
+        background-image: url("assets/media/green.png");
+        height: 100vh;
+        width: 100vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include flex-column-center;
+    }
+
+    &Title{
+        margin: 30px 0 0 0;
+        font-size: 54px;
+    }
+
+    &Button{
+        @include red_button;
+        margin: 30px 0 0 0;
+        font-size: 36px;
+        border-radius: 50px;
+        padding: 10px;
+    }
+
+    &Result{
+        &Container{
+            margin: 30px 0 0 0;
+            padding:10px;
+            @include glassmorphism;
+            @include flex-column-center;
+            background-color:white;
+            height: 50vh;
+            width:  50vw;
+            opacity: .5;
+
+        }
+
+        &Text{
+            margin: 50px 0 0 0;
+            font-size: 72px;
+        }
+    }
+}
