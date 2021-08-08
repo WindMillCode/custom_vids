@@ -1,0 +1,174 @@
+@use "sass:map";
+
+@mixin blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+}
+
+@mixin dark_blue_button {
+	background:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+}
+
+@mixin black_button {
+	background:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+}
+
+@mixin orange_button {
+	background:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+}
+
+@mixin red_button {
+	background:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+}
+
+@mixin green_button {
+	background:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@mixin outline{
+    border:3px dotted red;
+}
+
+@mixin view{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100vh;
+    width:100vw;
+    @include flex-column-center;
+
+
+}
+
+@mixin glassmorphism{
+    border-radius: 30px;
+    backdrop-filter: blur( 4px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+// @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
+// @import "../node_modules/primeng/resources/primeng.min.css";
+// @import "../node_modules/primeicons/primeicons.css";
+@import "assets/styles/fonts";
+@import "assets/styles/penrose";
+
+
+
+*{
+    // margin :10px 0 0 0;
+    margin:0;
+    padding: 0;
+    z-index:4;
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-color: transparent;
+    scrollbar-width: 6px;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #263040;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: transparent;
+        opacity:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+@function my_prod($step){
+    $type: prod;
+    $prod: (0:50% ,1:slidein 2s,2:1s);
+    $dev: (0:20px ,1:none,2:none);
+    $answer: "";
+    @if $type == prod {
+        $answer: map.get($prod,$step);
+
+    }
+    @else if $type == dev {
+        $answer: map.get($dev,$step);
+
+    }
+    @return $answer;
+}
+
+.a_p_p_{
+    &Specific{
+        &0{
+            // ...
+        }
+
+        &View{
+            @include view;
+        }
+    }
+
+    &BackgroundProp{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0px;
+        width: 0px;
+        z-index: 0;
+    }
+
+    &Overlay{
+        &Img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width:  100vw;
+            object-fit: cover;
+            // // background-image: url("assets/media/overlay_1.jpg");
+            // background-repeat: no-repeat;
+            // background-size: cover;
+        }
+
+        &Pod{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            top:0;
+            left:0;
+            position: absolute;
+            overflow:hidden;
+            display: none;
+        }
+    }
+
+    &ScratchPad{
+
+    }
+
+    // dev additions
+
+    &Main{
+        &Button{
+            margin: 20px auto;
+            position:absolute;
+            font-size:72px;
+            padding:20px;
+            @include dark_blue_button;
+            color: yellow;
+        }
+
+        &Pod{
+            display: flex;
+            @include flex-column-center;
+        }
+    }
+
+
+}

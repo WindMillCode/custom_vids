@@ -1,0 +1,30 @@
+{
+    "hosting": [
+        {
+            "site": "your-site-here",
+            "public": "dist/firebase",
+            "rewrites": [
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ],
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+		"headers": [
+                {
+                    "regex": ".+",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "max-age=0"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
