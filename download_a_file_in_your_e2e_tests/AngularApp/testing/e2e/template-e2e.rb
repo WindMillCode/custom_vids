@@ -84,7 +84,6 @@ RSpec.configure do |config|
   config.before :example do
 
     visit %{/}
-    # proxy.stub(ENV[%{BACKEND_URL}]).and_return :redirect_to => ENV[%{BACKEND_DEV_URL}]
 
     begin
       page.current_window.maximize
@@ -146,7 +145,7 @@ RSpec.configure do |config|
 
   config.after :suite do
     # dev addtions
-    clear_helper_downloads
+    
     #
 
   end
@@ -161,16 +160,14 @@ def stagingTest
 
     # downloading test
     scenario %{when the user clicks download we get a pdf} do
-      my_download = find %{a},:text => %{Download PDF}
-      my_download.click
-      wait_for_helper_download
-      expect(helper_downloads.length).to eq 1
-      expect(helper_download).to match /my_file.pdf/
-      sleep 10
-    end
+        my_download = find %{a},:text => %{Download PDF}
+        my_download.click
+        wait_for_helper_download
+        expect(helper_downloads.length).to eq 1
+        expect(helper_download).to match /my_file.pdf/
+        sleep 10
+      end
     #
-
-
 
   end
 
