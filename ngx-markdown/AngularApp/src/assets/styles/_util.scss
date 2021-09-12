@@ -1,0 +1,145 @@
+:root{ // very upset if you have css variables avaible to you update the space and use them instead of keep yr own smh
+    --bg-color_1: $bg-color-1;
+    --font_family0:Rockwell;
+    --font_family1 : Fjalla One;
+    --radial-bg-skyblue:radial-gradient(farthest-corner at 100% 0px, cyan 0%, skyblue 200%);
+    --radial-bg-darkblue:radial-gradient(farthest-corner at 100% 0px, royalblue 0%, navy 200%);
+    --radial-bg-blue:radial-gradient(farthest-corner at 100% 0px, cyan 0%, blue 200%);
+    --radial-bg-green:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, green 200%);
+    --radial-bg-viogreen:radial-gradient(farthest-corner at 100% 0px, aquamarine 0%, purple 200%);
+    --radial-bg-lightbrown:radial-gradient(farthest-corner at 100% 0px,  tan 0%, brown 120%);
+    --radial-bg-red:radial-gradient(farthest-corner at 100% 0px, red 0%, white 250%);
+    --radial-bg-black:radial-gradient(farthest-corner at 100% 0px, grey 0%, black 150%);
+    --radial-bg-orange:radial-gradient(farthest-corner at 100% 0px, orange 0%, red 200%);
+    --radiial-bg-ripebanana:radial-gradient(farthest-corner at 100% 0px, yellow 0%, green 200%);
+    --radial-bg-yellow:radial-gradient(farthest-corner at 100% 0px, yellow 0%, #999900 200%);
+    --radial-bg-purple:radial-gradient(farthest-corner at 100% 0px, violet 0%, purple 200%);
+    --radial-bg-pink:radial-gradient(farthest-corner at 100% 0px, #ff748c 0%,pink  200%);
+    --green:#40826D;
+    --black:#2b2523;
+}
+
+@mixin sky_blue_button{
+    background:var(--radial-bg-skyblue)
+}
+@mixin blue_button {
+	background:var(--radial-bg-blue);
+}
+@mixin dark_blue_button {
+	background:var(--radial-bg-darkblue);
+}
+@mixin black_button {
+	background:var(--radial-bg-black);
+}
+@mixin orange_button {
+	background:var(--radial-bg-orange);
+}
+@mixin red_button {
+	background:var(--radial-bg-red)
+}
+
+@mixin green_button {
+	background:var(--radial-bg-green)
+}
+@mixin light_brown_button {
+    background:var(--radial-bg-lightbrown)
+}
+
+@mixin viogreen_button {
+    background:var(--radial-bg-viogreen)
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@mixin outline{
+    border:3px dotted red;
+}
+
+@mixin view{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100vh;
+    width:100vw;
+    @include flex-column-center;
+
+
+}
+
+@mixin glassmorphism{
+    border-radius: 30px;
+    backdrop-filter: blur( 10px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@mixin tac{
+    text-align: center;
+}
+
+*{
+    // margin :10px 0 0 0;
+    margin:0;
+    padding: 0;
+    z-index:4;
+    font-family: Arial, Helvetica, sans-serif;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+
+    scrollbar-color: transparent;
+    scrollbar-width: 6px;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #263040;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: transparent;
+        opacity:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+
+.a_p_p_{
+    &Specific{
+
+        &View{
+            @include view;
+        }
+
+        &TAC{
+            @include tac;
+        }
+
+
+
+    }
+
+    &BackgroundProp{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0px;
+        width: 0px;
+        z-index: 0;
+    }
+
+    &ScratchPad{
+
+    }
+
+}

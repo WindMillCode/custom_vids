@@ -1,0 +1,19 @@
+<h1
+class="a_p_p_SanitizedMainTitle a_p_p_SpecificTAC"
+*ngIf="!sanitizePipeObj.value"
+>Sorry No Content Available</h1>
+
+<ng-container
+#elseBlock0
+*ngIf="sanitizePipeObj.value"
+[ngSwitch]="devObj.type">
+    <video controls
+    class="a_p_p_SanitizedMainItem"
+    [src]="(sanitizePipeObj | sanitizeUrl)"
+    *ngSwitchCase="'video'"></video>
+    <iframe
+    frameborder="0" allowfullscreen
+    class="a_p_p_SanitizedMainItem"
+    [src]="sanitizePipeObj | sanitizeUrl"
+    *ngSwitchCase="'iframe'"></iframe>
+</ng-container>

@@ -1,0 +1,21 @@
+@import "src/assets/styles/util";
+
+.a_p_p_{
+    &Sanitized{
+        &View{
+
+        }
+
+        &Main{
+            &Title{
+
+            }
+            &Item{
+                width: 100%;
+                height: 100%;
+                inset:0;
+                position: relative;
+            }
+        }
+    }
+}
