@@ -1,0 +1,35 @@
+<footer
+class="a_p_p_FooterMainPod"
+>
+    <div
+    class="a_p_p_FooterPod1 a_p_p_FooterPod"
+    >
+        <h1
+        class="a_p_p_FooterPod1Title"
+        >WindMillCode</h1>
+        <a
+        [routerLink]="item.text | lowercase"
+        class="a_p_p_FooterPod1Links"
+        *ngFor="let item of links.items"
+        >{{item.text}}</a>
+    </div>
+    <div
+    class="a_p_p_FooterPod2 a_p_p_FooterPod"
+    >
+        <h1 class="a_p_p_FooterPod2Title"
+        >Contact</h1>
+        <a href="mailto:shieldmousetower734@gmail.com">Email Us Here</a>
+    </div>
+    <div
+    class="a_p_p_FooterPod3 a_p_p_FooterPod"
+    >
+        <h1 class="a_p_p_FooterPod3Title a_p_p_SpecificTAC"
+        >Connect</h1>
+        <img
+        (click)="item.click($event)"
+        class="a_p_p_FooterPod3Icon"
+        *ngFor="let  item of icons.items"
+        [src]="item.url" alt="">
+    </div>
+</footer>
+
