@@ -6,6 +6,11 @@ import { eventDispatcher,numberParse } from './customExports';
 import { of,Subscription,fromEvent } from 'rxjs';
 import { delay,tap } from 'rxjs/operators';
 
+// katex options
+import { KatexOptions } from 'ngx-markdown';
+//
+
+
 declare global{
     var Prism:any
 }
@@ -44,6 +49,14 @@ export class AppComponent {
 
         ### Backend
         * a sample python app
+
+
+        I :heart: ngx-markdown
+
+
+        \$c = \\pm\\sqrt{a^2 + b^2}\$
+
+
         \`\`\`py
         thisdict =	{
             "brand": "Ford",
@@ -53,7 +66,10 @@ export class AppComponent {
           for x in thisdict.values():
             print(x)
         \`\`\`
-        `
+        `,
+
+        // paste KaTeX options here
+
         //
     }
     ngOnInit() {
