@@ -4,7 +4,7 @@
 * if issues restart lab from AngularAppStart
 
 ## Start the Angular app
-* download the frontend [here](https://downgit.github.io/#/home?url=https://github.com/WindMillCode/Facebook_Project/tree/master/AngularApp)
+* download the frontend [here](https://downgit.github.io/#/home?url=https://github.com/WindMillCode/custom_vids/tree/master/ngx-markdown-part-3)
 * open a terminal and head to project root and run this command
 ```ps1
 cd AngularApp
