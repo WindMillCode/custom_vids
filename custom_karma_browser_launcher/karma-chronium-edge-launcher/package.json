@@ -1,0 +1,22 @@
+{
+  "name": "@windmillcode/karma-chronium-edge-launcher",
+  "version": "0.0.3",
+  "description": "karma launcher for chrome based microsoft edge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/windmillcode0/karma-chronium-edge-launcher.git"
+  },
+  "author": "windmillcode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/windmillcode0/karma-chronium-edge-launcher/issues"
+  },
+  "homepage": "https://github.com/windmillcode0/karma-chronium-edge-launcher#readme",
+  "dependencies": {
+    "verdaccio": "^5.14.0"
+  }
+}
