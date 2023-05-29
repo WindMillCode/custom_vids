@@ -1,0 +1,73 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "flask backend: run",
+      "type": "shell",
+      "windows": {
+        "command": ".\\ignore\\Windmillcode\\run_backend_dev.ps1 Windmillcode"
+      },
+      "osx": {
+        "command": "./ignore/Windmillcode/run-backend-dev.sh Windmillcode"
+      },
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "flask backend: install app deps",
+      "type": "shell",
+      "windows":{
+        "command": " cd apps\\zero\\backend\\FlaskApp; pip install -r windows-requirements.txt --upgrade --target .\\site-packages\\windows",
+      },
+      "osx": {
+        "command": "./ignore/Windmillcode/install-backend-flask.sh darwin"
+      },
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+
+    },
+    {
+      "label": "cloud-firebase: install app deps",
+      "type": "shell",
+      "windows":{
+        "command": " cd apps\\zero\\cloud\\firebase; yarn install",
+      },
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "cloud-firebase:run emulators",
+      "type": "shell",
+      "windows":{
+        "command": "cd .\\apps\\zero\\cloud\\firebase\\;npm run cleanup;npx firebase emulators:start --import='devData' --export-on-exit",
+      },
+      "osx": {
+        "command": "cd ./apps/zero/cloud/firebase/;npm run cleanup;npx firebase emulators:start --import='devData' --export-on-exit"
+      },
+      "group": "none",
+      "linux": {
+        "command": "cd ./apps/zero/cloud/firebase/;npx firebase emulators:start --import='devData' --export-on-exit"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+  ],
+  "inputs": []
+}

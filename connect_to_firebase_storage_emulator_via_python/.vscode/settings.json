@@ -1,0 +1,22 @@
+{
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "examples/**":true,
+    "docs/**":true
+  },
+  "workbench.colorTheme": "Base16 Dark Ashes",
+  "task.allowAutomaticTasks": "on",
+  "python.formatting.provider": "black",
+  "python.analysis.extraPaths": [
+    "./apps/zero/backend/FlaskApp/site-packages/windows",
+    "./apps/zero/backend/FlaskApp/site-packages/linux",
+    "./apps/zero/backend/FlaskApp/site-packages/darwin",
+    "./apps/zero/backend/FlaskApp"
+  ],
+
+
+
+}
