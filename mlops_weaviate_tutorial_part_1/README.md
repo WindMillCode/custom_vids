@@ -3,8 +3,8 @@
 
 # MLOPS WEAVIATE TUTORIAL PART 1
 
-* after this lab your project shoud look like WeaviateFinal
-* if issues restart lab from WeviateStart
+* after this lab your project shoud look like final
+* if issues restart lab from start
 
 ## Start up the kubernetes cluster
 * you need docker for this if you dont have this [install](https://docs.docker.com/desktop/)
