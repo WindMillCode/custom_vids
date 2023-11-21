@@ -32,15 +32,15 @@ cv2
 ## Create the client
 __FILE__ start\manager.py
 ```py
-class WeaviateManager():
-  def ___init__(self,client_url):
+  def __init__(self,client_url):
     self.client = weaviate.Client(
-      url="http://localhost:8080",
+      url=client_url,
     )
     while True:
-      time.sleep(1000)
       if self.client.is_ready():
+        print("Connected")
         break
+      time.sleep(1)
 ```
 
 __FILE__ start\run.py
@@ -85,7 +85,7 @@ weaviate_manager.create_schema(schema_name)
 ## Import images
 __FILE__ start\manager.py
 ```py
-  def import_images(self,image_list,batch_size=3,schema_name=DEFAULT_SCHEMA_NAME):
+def import_images(self,image_list,batch_size=3,schema_name=DEFAULT_SCHEMA_NAME):
     self.client.batch.configure(batch_size)
     with self.client.batch as batch:
       for name in image_list:
@@ -120,30 +120,31 @@ weaviate_manager.import_images(
 ## Import audio
 __FILE__ start\manager.py
 ```py
-  def import_audio(self,audio_list,batch_size=1,schema_name=DEFAULT_SCHEMA_NAME):
-    self.client.batch.configure(batch_size)
+  def import_audio(self,target_list,batch_size=1,schema_name=DEFAULT_SCHEMA_NAME):
+    self.client.batch.configure(batch_size)  # Load images in batches of 1, as these might be big files
     with self.client.batch as batch:
-      for name in audio_list:
-        print(f"Adding {name}")
 
-        # Build the path to the image file
-        path = "./source/audio/" + name
+        for name in target_list:
+            print(f"Adding {name}")
 
-        # Object to store in Weaviate
-        properties = {
-            "name": name,
-            "path": path,
-            "image": self._to_base_64(path), # Weaviate will use the base64 representation of the file to generate a vector.
-            "mediaType": "audio"
-        }
+            # Build the path to the image file
+            path = "./source/audio/" + name
 
-        # Add the object to Weaviate
-        self.client.batch.add_data_object(properties, schema_name)
+            # Object to store in Weaviate
+            properties = {
+                "name": name,
+                "path": path,
+                "audio": self._to_base_64(path), # Weaviate will use the base64 representation of the file to generate a vector.
+                "mediaType": "audio"
+            }
+
+            # Add the object to Weaviate
+            self.client.batch.add_data_object(properties, schema_name)
 ```
 __FILE__ start\run.py
 ```py
 weaviate_manager.import_audio(
-  audio_list=[
+  target_list=[
     "mixkit-big-thunder-with-rain-1291.wav",
     "mixkit-cartoon-kitty-begging-meow-92.wav",
     "mixkit-cow-moo-1744.wav",
@@ -164,32 +165,33 @@ weaviate_manager.import_audio(
 # Video
 __FILE__ start\manager.py
 ```py
-  def import_video(self,audio_list,batch_size=1,schema_name=DEFAULT_SCHEMA_NAME):
-    self.client.batch.configure(batch_size)
+  def import_video(self,target_list,batch_size=1,schema_name=DEFAULT_SCHEMA_NAME):
+    self.client.batch.configure(batch_size)  # Load images in batches of 1, as these might be big files
     with self.client.batch as batch:
-      for name in audio_list:
-        print(f"Adding {name}")
 
-        # Build the path to the image file
-        path = "./source/video/" + name
+        for name in target_list:
+            print(f"Adding {name}")
 
-        # Object to store in Weaviate
-        properties = {
-            "name": name,
-            "path": path,
-            "image": self._to_base_64(path), # Weaviate will use the base64 representation of the file to generate a vector.
-            "mediaType": "video"
-        }
+            # Build the path to the image file
+            path = "./source/video/" + name
 
-        # Add the object to Weaviate
-        self.client.batch.add_data_object(properties, schema_name)
+            # Object to store in Weaviate
+            properties = {
+                "name": name,
+                "path": path,
+                "video": self._to_base_64(path), # Weaviate will use the base64 representation of the file to generate a vector.
+                "mediaType": "video"
+            }
+
+            # Add the object to Weaviate
+            self.client.batch.add_data_object(properties, schema_name)
 ```
 
 
 __FILE__ start\run.py
 ```py
 weaviate_manager.import_video(
-  audio_list=[
+  target_list=[
     "cat-clean.mp4", "cat-play.mp4",
     "dog-high-five.mp4", "dog-with-stick.mp4",
     "meerkat-dig.mp4", "meerkat-watch.mp4"
@@ -312,18 +314,17 @@ weaviate_manager.display_media(media_text_result[0])
 
 __FILE__ start\manager.py
 ```py
-  def search_for_media_via_image(self,query):
+  def search_for_media_via_audio(self,query):
     response = (
         self.client.query
-        .get(DEFAULT_SCHEMA_NAME, "name path mediaType")
-        .with_near_image(
-            {"audio": query}
+        .get("Animals", "name path mediaType")
+        .with_near_audio(
+            {"audio": query},
         )
-        .with_limit(3)
+        .with_limit(5)
         .do()
     )
 
-    # Print results
     result = response["data"]["Get"][DEFAULT_SCHEMA_NAME]
     self.json_print(result)
     return result
@@ -331,8 +332,9 @@ __FILE__ start\manager.py
 
 __FILE__ start\run.py
 ```py
-media_text_result = weaviate_manager.search_for_media_via_image("./test/test-cat.jpg")
+media_text_result = weaviate_manager.search_for_media_via_audio("./test/bird_audio.wav")
 weaviate_manager.display_media(media_text_result[0])
+
 ```
 
 ## Search for media via video

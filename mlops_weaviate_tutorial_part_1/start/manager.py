@@ -12,6 +12,9 @@ import cv2
 DEFAULT_SCHEMA_NAME = "Animals"
 class WeaviateManager:
 
+  def _to_base_64(self,path):
+    with open(path, 'rb') as file:
+        return base64.b64encode(file.read()).decode('utf-8')
 
   def show_image(self, path):
       try:
