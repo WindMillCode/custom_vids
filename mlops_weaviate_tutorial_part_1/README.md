@@ -1,3 +1,5 @@
+# [Youtube URL](https://www.youtube.com/watch?v=0Dr5258eSoQ)
+
 
 # MLOPS WEAVIATE TUTORIAL PART 1
 
