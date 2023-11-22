@@ -1,3 +1,5 @@
 start/weaviate-env
 final/weaviate-env
 final/wiki_simple_100k.parquet
+start/my_secret.py
+restart/my_secret.py

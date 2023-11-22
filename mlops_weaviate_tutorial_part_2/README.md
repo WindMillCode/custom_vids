@@ -13,9 +13,9 @@ pip install weaviate-client pandas pyarrow Pillow pygame opencv-python-headless 
 
 
 ## Connect to Weaviate cloud
-* make a weaviate account [here](https://console.weaviate.cloud/)
-* make a cohere account [here](https://dashboard.cohere.com/welcome/register)
-* make a chatgpt account [here](https://chat.openai.com/auth/login?ref=upstract.com)
+* make a weaviate account and createa a cluster to get your api key [here](https://console.weaviate.cloud/)
+* make a cohere account and get your api key [here](https://dashboard.cohere.com/welcome/register)
+* make a chatgpt account and get your api key [here](https://chat.openai.com/auth/login?ref=upstract.com)
 
 __FILE__ start/manager.py
 ```py
@@ -57,6 +57,7 @@ app = WeaviateManager(
 __FILE__ start/manager.py
 ```py
   def create_database_schema(self,name,desc):
+    self.client.schema.delete_all()
     article_schema = {
         "class": name,
         "description": desc,
@@ -107,7 +108,7 @@ __FILE__ start/manager.py
     }
 
     # add the schema
-    #client.schema.delete_all()
+    
     self.client.schema.create_class(article_schema)
 		print("The schema has been created")
 
@@ -267,7 +268,7 @@ app.semantic_search("很棒的电影")
 
 __FILE__ start/manager.py
 ```py
-  def mix_of_keyword_and_semantic_search(self,alpha,query):
+  def mix_of_keyword_and_semantic_search(self,query,alpha):
     response = (
         self.client.query
         .get("Article", ["title", "text"])
@@ -286,7 +287,7 @@ __FILE__ start/manager.py
 __FILE__ start/run.py
 ```py
 
-app.mix_of_keyword_and_semantic_search("The Dark Knight")
+app.mix_of_keyword_and_semantic_search("The Dark Knight",0)
 # try to guess what alpha does
 app.mix_of_keyword_and_semantic_search("The Dark Knight",1)
 
