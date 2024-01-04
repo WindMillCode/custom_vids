@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Analytics Engine</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="<%= asset_path('seo.png') %>" type="image/png" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <p style="color: green; text-align: center;"><%= notice %></p>
+    <p style="color: red; text-align: center;"><%= alert %></p>
+    <%= render "shared/navbar" %>
+    <%= yield %>
+  </body>
+</html>

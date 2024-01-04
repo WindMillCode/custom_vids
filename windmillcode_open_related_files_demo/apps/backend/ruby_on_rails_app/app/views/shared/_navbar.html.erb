@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <div class="nav_container">
+    <div class="links_container">
+      <%= link_to "Articles", articles_path %>
+      <%= link_to "Analytics", searches_path %>
+    </div>
+    <%= button_to "Log out", destroy_user_session_path, method: "delete", id: "log_out_btn" %>
+  </div>
+<% end %>

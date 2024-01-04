@@ -1,0 +1,8 @@
+<main class="main_container">
+  <h1 class="main_title"><%= pluralize(@searches.length, "popular search") %></h1>
+  <div id="searches">
+    <% @searches.each do |search| %>
+      <%= render search %>
+    <% end %>
+  </div>
+</main>

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&display=swap');
+
+:root {
+  --main-background-color: #f7f2fe;
+  --text-color: #05010d;
+  --card-title-color: #f34a80;
+  --card-background-color: #f7dbf3;
+  --primary-color: #6b1aef;
+  --searchbar-background-color: #dcc7fb;
+  --searchbar-text-color: #792ff0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.main_title {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.main_container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_container {
+  margin-bottom: 20px;
+  padding: 15px 30px;
+  background-color: var(--card-background-color);
+  border-radius: 15px;
+}
+
+.card_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--card-title-color);
+}
+
+.search_bar_container {
+  background-color: var(--searchbar-background-color);
+  border-radius: 9999px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 25px;
+}
+
+#search_input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 100%;
+  width: 90%;
+}
+
+.search_input::placeholder {
+  color: var(--searchbar-text-color);
+  font-weight: bold;
+}
+
+.splash {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash_title {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.field,
+.actions {
+  margin-bottom: 20px;
+}
+
+.field label {
+  margin-bottom: 5px;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='submit'] {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.actions input {
+  background-color: var(--primary-color);
+  width: 100%;
+  cursor: pointer;
+  color: var(--main-background-color);
+}
+
+.auth_container {
+  width: 70%;
+}
+
+.auth_container form {
+  width: 100%;
+}
+
+.nav_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 70px;
+}
+
+.links_container a {
+  padding: 0 10px;
+  color: var(--text-color);
+}
+
+#log_out_btn {
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: none;
+  background-color: var(--card-title-color);
+  color: var(--main-background-color);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .search_bar_container {
+    width: 50%;
+    margin: 20px auto;
+    margin-top: 0;
+  }
+
+  .auth_container {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .search_bar_container {
+    width: 40%;
+    margin: 20px auto;
+    margin-top: 0;
+  }
+
+  .auth_container {
+    width: 25%;
+  }
+
+  .main_container {
+    padding: 0 70px;
+  }
+}

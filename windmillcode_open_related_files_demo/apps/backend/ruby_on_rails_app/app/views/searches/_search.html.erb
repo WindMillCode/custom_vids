@@ -1,0 +1,10 @@
+<div id="<%= dom_id search %>" class="card_container"
+>
+  <span class="card_title">
+    <span>
+      "<%= search.query %>"
+    </span>
+    <span>for</span>
+    <%= pluralize(search.count, "time") %>
+  </span>
+</div>
