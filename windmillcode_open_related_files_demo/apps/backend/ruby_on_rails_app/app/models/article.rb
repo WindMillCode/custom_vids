@@ -1,4 +1,4 @@
-class Article < ApplicationRecord
+cclass Article < ApplicationRecord
   include PgSearch::Model
   belongs_to :user
 

@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+tclass ArticlesController < ApplicationController
   include SearchesHelper
   before_action :set_query, only: %i[index]
 
