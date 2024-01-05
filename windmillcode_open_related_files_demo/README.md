@@ -1,14 +1,27 @@
 # Windmillcode Open Related Files
 
+[Youtube URL](https://www.youtube.com/watch?v=ZBjVapDAOk0)
+[Github URL](https://github.com/WindMillCode/custom_vids/tree/master/windmillcode_open_related_files_demo)
+
 ## Step 1
 * Download and install the extension from the [extension marketplace]( https://marketplace.visualstudio.com/items?itemName=windmillcode-publisher-0.windmillcode-open-related-files)
 
 * then download and open the folder in a new vscode [workspace](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/WindMillCode/custom_vids/tree/master/windmillcode_open_related_files_demo)
 
+* open Header.js in the editor
+* then HeaderView.js
+* then styles.js
+
+* now close everyhting and open
+* WidgetView.js
+* Widget.js
+* styles.js
+
+see how difficult that is
+
 ## Step 2
 __FILE__  .vscode\settings.json
 ```json
-...
   "windmillcode-open-related-files": {
     "options": [
       {
@@ -142,7 +155,6 @@ __FILE__  .vscode\settings.json
 
     ]
   }
-...
 ```
 
 
@@ -152,16 +164,7 @@ __FILE__  .vscode\settings.json
 select __Windmillcode Open Related Files: Set Default Option__
 select __React Developent__
 
-* open Header.js in the editor
-* then HeaderView.js
-* then styles.js
 
-* now close everyhting and open
-* WidgetView.js
-* Widget.js
-* styles.js
-
-see how difficult that is
 
 ## Step 3
 
