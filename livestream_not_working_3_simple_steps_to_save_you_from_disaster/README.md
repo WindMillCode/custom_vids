@@ -1,5 +1,6 @@
 
 # Livestream not working 3 simple steps to save you from disaster
+[Youtube Link](https://youtu.be/MRbZE4yIWa8)
 
 Right Click in your web browser -> Click Inspect -> Click Console in the open Dev Tools > use ```clear()``` in the console input and hit enter to clear the logging infi
 
